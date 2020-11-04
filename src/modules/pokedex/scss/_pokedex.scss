@@ -1,0 +1,170 @@
+.pokedexMain {
+  @include container;
+}
+.presentation {
+  margin: $spaceDefault 0;
+  @include utilBackground;
+  @include flex(s, wrap);
+  h1::after {
+    display: none;
+  }
+  div {
+    flex: 1 1 280px;
+    margin-right: $spaceDefault;
+    @include d(t) {
+      margin-right: 0;
+    }
+    span {
+      color: $yellow;
+      text-shadow: 2px 1px 0px #356fae, 
+                  -1px 0px 0px #356fae, 
+                   1px 2px 0px #356fae, 
+                   0px 3px 0px #356fae;
+    }
+  }
+  img {
+    flex: 2 1 280px;
+    padding: $spaceDefault 0;
+  }
+}
+
+.history {
+  
+  @include flex(s, wrap);
+  div {
+    flex: 1 1 280px;
+  }
+  .historyIssue {
+    @include utilBackground;
+    margin-right: $spaceDefault;
+    @include flex(s);
+    flex-direction: column;
+    @include d(m) {
+      margin-right: 0;
+      flex-basis: 100%;
+      margin-bottom: $spaceDefault;
+    }
+    img {
+      margin: $spaceDefault 0;
+      @include d(m) {
+        margin: 0 auto;
+        margin: $spaceDefault 0;
+        order: 1;
+      }
+    }
+  }
+  .curiosity {
+    @include utilBackground;
+    img {
+        margin-bottom: $spaceDefault;
+    }
+  }
+}
+
+.information {
+  margin: $spaceDefault 0;
+  @include utilBackground;
+  position: relative;
+  span {
+    color: $yellow;
+  }
+  form {
+    padding: $spaceDefault 0;
+    @include flex(s, wrap);
+    div {
+      @include flex(s);
+      flex-direction: column;
+    }
+    .informationSelect {
+      width: 150px;
+      margin-right: $spaceDefault;
+    }
+    #selectType {
+      height: 34px;    
+    }
+    .informationSearch {
+      flex: 1;
+      span {
+        display: flex;
+        input[type="search"]{
+          flex: 10 1 180px;
+        }
+        input[type="submit"] {
+          flex: 1 1 100px;
+          box-sizing: border-box;
+          background-color: $yellow;
+          font-weight: bold;
+          color: $white;
+          padding: 0;
+          margin-left: $spaceDefault;
+          border: 2px solid $yellow;
+          cursor: pointer;
+          border-radius: 4px;
+          outline: none;
+          &:hover {
+            background: $blue;
+          }
+        }
+      }
+    }
+  }
+  .contentLists {
+    @include flex(s, wrap);
+    .pokemonListByName {
+      @include flex(s);
+      width: 50%;
+      padding: $spaceDefault 0;
+      transition: all 1s;
+      button {
+        margin: $spaceDefault 0;
+        padding: 0 $spaceDefault;
+        background: $yellow;
+        @include tipo-1(16, $white);
+        font-weight: bold;
+        border: 2px solid $yellow;
+        cursor: pointer;
+        border-radius: 4px;
+        outline-style: none;
+        &:hover {
+          background: $blue;
+        }
+      }
+      img {
+        margin: 0 auto;
+        margin-bottom: $spaceDefault;
+        align-self: flex-start;
+        width: 200px;
+        height: 200px;
+      }
+      div {
+        @include flex(s, wrap);
+        flex-direction: column;
+      }
+      ul {
+        width: 100%;
+      }
+      li {
+        margin-left: $spaceDefault;
+      }
+    }
+  }
+  .error {
+    position: absolute;
+    width: 100%;
+    height: 87%;
+    top: 0;
+    left: 0;
+    @include flex(c);
+    padding:$spaceTitle;
+    @include tipo-2(24, $white);
+    @include d(m) {
+      font-size: em(18);
+    }
+    border-radius: 4px;
+    background: rgba(255, 0, 0, .9);
+    p {
+      padding: 0 $spaceDefault;
+    }
+  }
+}
+

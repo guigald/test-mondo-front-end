@@ -1,0 +1,33 @@
+body {
+  min-height: 100vh;
+  font-family: $fonte-1;
+  background: url("../../public/natureCloud.png") $blue center center repeat-y;
+  background-size: cover;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+h1 {
+  @include tipo-2(28, $white);
+  padding: $spaceTitle;
+  &::after {
+    display: block;
+    content: "";
+    width: 65px;
+    height: 2px;
+    background: $yellow;
+  } 
+}
+p, li {
+  @include tipo-1(18, $white);
+}
+select, option, input, input::placeholder {
+  @include tipo-1(16, $fontColor1);
+  outline-color: $yellow;
+}
+label {
+  @include tipo-1(18, $white);
+}

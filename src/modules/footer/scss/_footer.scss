@@ -1,0 +1,16 @@
+footer {
+  margin-top: $spaceDefault;
+  padding: $spaceDefault;
+  background: $yellow;
+  p {
+    font-weight: bold;
+  }
+  @include flex(c);
+  ul {
+    @include flex(s);
+    a {
+      @include tipo-1(18, $white);
+      margin: 5px;
+    }
+  }
+}
