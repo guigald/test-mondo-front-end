@@ -18,7 +18,8 @@
       </div>
     </form>
     <div class="contentLists">
-      <PokemonList />
+      <PokemonList  v-on:clickPhase="clickPhase" v-on:selectedByType="selectedByType" />
+      <div class="teste"></div>
     </div>
     <div class="error" v-if="search.error">
       <p>{{search.error}}</p>
@@ -51,10 +52,14 @@ export default {
     PokemonList
   },
   methods: {
-    ...mapActions(['getPokemon']),
+    ...mapActions([
+      'getPokemon',
+      'getListTypes'
+    ]),
     handleClick () {
       if (this.search.pokemon === undefined) {
         this.search.error = 'O campo de pesquisa não pode ser nulo.'
+        this.search.pokemon = undefined
         this.removeModal(2000)
       } else {
         this.getTypeSelected(this.search.selected)
@@ -67,22 +72,64 @@ export default {
         } catch (error) {
           this.search.error = 'Serviço indisponível no momento. Por favor tente novamente em alguns instantes!'
         } finally {
-          this.removeModal(2000)
+          this.search.pokemon = undefined
+          this.removeModal(3000)
         }
+      }
+      if (type === 'color') {
+        this.getServicesColor(this.search.pokemon)
+        this.search.selected = 'name'
       }
     },
     async getServices (itemToSearch) {
-      const response = await apiClient.getByName(itemToSearch)
-      this.getPokemon({ pokemon: response.data })
+      try {
+        const response = await apiClient.getByName(itemToSearch)
+        this.getPokemon({ pokemon: response.data })
+      } catch (error) {
+        this.search.error = 'Não encontrado, corriga o campo de busca.'
+      } finally {
+        this.search.pokemon = undefined
+        this.removeModal(3000)
+      }
+    },
+    async getServicesColor (itemToSearch) {
+      try {
+        const response = await apiClient.getPokemonsByColors(itemToSearch)
+        const data = response.data.pokemon_species
+        const names = []
+        data.forEach(pokemon => {
+          names.push(pokemon.name)
+        })
+        this.getListTypes({ listTypes: names })
+      } catch (error) {
+        console.log(error, 'errror', 'aqui', this.search.selected)
+        this.search.error = 'Ops solicitação inválida, verifique o valor ou tente novamente mais tarde.'
+      } finally {
+        this.search.pokemon = undefined
+        this.removeModal(3000)
+      }
     },
     removeModal (time) {
       setTimeout(() => {
         this.search.error = false
       }, `${time}`)
+    },
+    clickPhase (e) {
+      this.search.pokemon = e.name
+      this.handleClick()
+    },
+    selectedByType (e) {
+      if (e !== undefined) {
+        this.search.pokemon = e
+        this.handleClick()
+      }
     }
   },
   created () {
     register(this.$store)
+    this.search.pokemon = 'bulbasaur'
+    this.handleClick()
+    this.search.pokemon = undefined
   }
 }
 </script>

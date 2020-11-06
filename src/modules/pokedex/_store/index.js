@@ -4,7 +4,8 @@ import actions from './actions'
 
 const state = {
   error: undefined,
-  pokemonByName: undefined
+  pokemonByName: undefined,
+  pokemonsList: undefined
 }
 
 export default {
