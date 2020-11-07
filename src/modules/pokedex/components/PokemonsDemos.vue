@@ -2,7 +2,7 @@
   <div class="pokemonsDemos">
     <h1>Diversidade</h1>
     <p>Existem Pokémons de diversas cores, tipos ou até mesmo de habitats diferentes, você pode utilizar nossa pesquisa para obter informações sobre todos os Pokémons abaixo e muito mais...</p>
-    <small>Para obter maiores informações acesse: <a href="https://bulbapedia.bulbagarden.net/wiki/Main_Page" target="_blank">Bulbapedia.</a></small>
+    <small>Para mais informações acesse: <a href="https://bulbapedia.bulbagarden.net/wiki/Main_Page" target="_blank">Bulbapedia.</a></small>
     <div class="pokemonsDemosContainer">
       <div class="pblue">
         <p>Azul-(Blue)</p>
