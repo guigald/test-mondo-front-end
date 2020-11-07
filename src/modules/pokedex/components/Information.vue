@@ -11,7 +11,7 @@
           </select>
         </div>
         <div class="informationSearch" >
-          <label for="fieldSearch">Pesquisar: </label>
+          <label for="fieldSearch">Pesquisar(palavras em Inglês): </label>
           <span>
             <input id="fieldSearch" type="search" placeholder="Encontre um Pokémon" v-model.trim="search.pokemon">
             <input type="submit" value="Buscar" @click.prevent.stop="handleClick">
