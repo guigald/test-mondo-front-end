@@ -2,5 +2,10 @@
 @import "variables_mixins";
 @import "utils";
 @import "./../modules/header/scss/header";
-@import "./../modules/pokedex/scss/pokedex";
+@import "./../modules/pokedex/scss/pokedexUtils";
+@import "./../modules/pokedex/scss/presentation";
+@import "./../modules/pokedex/scss/history";
+@import "./../modules/pokedex/scss/pokemonList";
+@import "./../modules/pokedex/scss/information";
+@import "./../modules/pokedex/scss/pokemonsDemo";
 @import "./../modules/footer/scss/footer";

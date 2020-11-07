@@ -26,5 +26,11 @@ export default {
   },
   getPokemonsByColors (color) {
     return apiClient.get(`/pokemon-color/${color}`)
+  },
+  getPokemonsByEggGroup (group) {
+    return apiClient.get(`/egg-group/${group}`)
+  },
+  getPokemonsByLocale (locale) {
+    return apiClient.get(`/pokemon-habitat/${locale}`)
   }
 }

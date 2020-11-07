@@ -1,0 +1,39 @@
+.pokemonsDemos {
+  @include utilBackground;
+  flex: 1;
+  .pokemonsDemosContainer {
+    @include flex(c, wrap);
+    padding: $spaceDefault 0;
+  }
+  .pred {
+    @include containerImgDemos;
+    background: $red;
+  }
+  .pblue {
+    @include containerImgDemos;
+    background-color: $blue;
+  }
+  .pyellow {
+    @include containerImgDemos;
+    background-color: $yellow;
+  }
+  .pgreen {
+    @include containerImgDemos;
+    background-color: green;
+  }
+  .pdragon, .prock, .pgrass, .psteel {
+    @include containerImgDemos;
+  }
+  .pmountain, .psea, .pforest {
+    @include containerImgDemos;
+    width: 200px;
+    height: 180px;
+  }
+  small{
+    color: $white;
+    margin: $spaceDefault $spaceDefault $spaceDefault 0;
+    a {
+      color: $blue;
+    }
+  }
+}

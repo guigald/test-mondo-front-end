@@ -7,10 +7,10 @@ export default {
   getPokemon: async ({ commit }, { pokemon }) => {
     commit(types.POKEMON_BY_NAME, { pokemon })
   },
-  getListTypes: async ({ commit }, { listTypes }) => {
-    commit(types.POKEMONS_TYPES, { listTypes })
+  getList: async ({ commit }, { list }) => {
+    commit(types.POKEMONS_TYPES, { list })
   },
-  resetListTypes: ({ commit }) => {
+  resetlist: ({ commit }) => {
     commit(types.RESET_POKEMONS_TYPES, {})
   },
   setError: ({ commit }, { error }) => {

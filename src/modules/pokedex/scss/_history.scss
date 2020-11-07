@@ -1,0 +1,31 @@
+.history {
+  @include flex(s, wrap);
+  div {
+    flex: 1 1 280px;
+  }
+  .historyIssue {
+    @include utilBackground;
+    margin-right: $spaceDefault;
+    @include flex(s);
+    flex-direction: column;
+    @include d(m) {
+      margin-right: 0;
+      flex-basis: 100%;
+      margin-bottom: $spaceDefault;
+    }
+    img {
+      margin: $spaceDefault 0;
+      @include d(m) {
+        margin: 0 auto;
+        margin: $spaceDefault 0;
+        order: 1;
+      }
+    }
+  }
+  .curiosity {
+    @include utilBackground;
+    img {
+        margin-bottom: $spaceDefault;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 $fontColor1: #2c3e50;
 $blue: #45B2F5;
 $white: #fff;
+$black: #000;
 $red: #c82333;
 $yellow: #FFCB05;
 
@@ -35,6 +36,17 @@ $fonte-2: 'Red Hat Display', sans-serif;
   box-shadow: $shadowE;
 }
 
+@mixin containerImgDemos {
+  width: 141px;
+  height: 175px;
+  border: 2px solid $yellow;
+  box-shadow: $shadowC;
+  border-radius: 4px;
+  margin: 5px;
+  @include flex(c);
+  flex-direction: column;
+  align-items: center;
+}
 
 @mixin flex($position, $wrap:nowrap) {
   display: flex;
@@ -115,6 +127,11 @@ $fonte-2: 'Red Hat Display', sans-serif;
 
 //Media-queries
 @mixin d($dispositivo) {
+  @if $dispositivo==p {
+    @media (max-width: 1130px) {
+        @content;
+    }
+  }
   @if $dispositivo==t {
       @media only screen and (min-width: 768px) and (max-width: 959px) {
           @content;

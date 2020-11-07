@@ -9,8 +9,8 @@ export default {
   [POKEMON_BY_NAME]: (state, { pokemon }) => {
     state.pokemonByName = pokemon
   },
-  [POKEMONS_TYPES]: (state, { listTypes }) => {
-    state.pokemonsList = listTypes
+  [POKEMONS_TYPES]: (state, { list }) => {
+    state.pokemonsList = list
   },
   [RESET_POKEMONS_TYPES]: (state) => {
     state.pokemonsList = undefined

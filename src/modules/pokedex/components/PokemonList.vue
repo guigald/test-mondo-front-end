@@ -1,5 +1,6 @@
 <template>
   <div v-if="getter_pokemon" class="pokemonListByName">
+    <h1>Pesquisa Pokémons</h1>
     <img :src="getter_pokemon.sprites.other.dream_world.front_default" alt="Foto do Pokemon">
     <div class="containerButtons">
       <button @click="handleClickDetails" :class="details ? 'buttonActive' : ''"> {{ detailsMessage }} </button>
@@ -7,39 +8,45 @@
     </div>
     <div class="pokemonListContent">
       <div class="detailsInfos">
-        <p><b>Nome:</b> {{getter_pokemon.name | name }} </p>
-        <p><b>Registro:</b> {{getter_pokemon.id}} </p>
-        <p><b>Peso: </b> {{getter_pokemon.weight  / 10}} kg </p>
-        <p><b>Altura: </b> {{getter_pokemon.height   / 10}} m </p>
-        <div class="types">
-          <p><b>Tipo: </b></p>
-          <ul>
-            <li v-for="(types, index) in getter_pokemon.types" :key="index" @click="clickTypes(types.type.name)"> - <i class="fas fa-info-circle"></i> {{ types.type.name }} </li>
-          </ul>
+        <div>
+          <p><b>Nome:</b> {{getter_pokemon.name | name }} </p>
+          <p><b>Registro:</b> {{getter_pokemon.id}} </p>
+          <p><b>Peso: </b> {{getter_pokemon.weight  / 10}} kg </p>
+          <p><b>Altura: </b> {{getter_pokemon.height   / 10}} m </p>
+          <div class="types">
+            <p><b>Tipo:</b></p>
+            <ul>
+              <li v-for="(types, index) in getter_pokemon.types" :key="index" @click="clickTypes(types.type.name)"> - <i class="fas fa-info-circle"></i> {{ types.type.name }} </li>
+            </ul>
+          </div>
+          <img :src="getter_pokemon.sprites.back_default" alt="Foto do Pokemon">
         </div>
-        <img :src="getter_pokemon.sprites.back_default" alt="Foto do Pokemon">
       </div>
       <div v-if="details" class="details">
         <div>
-          <p><b>Estatísticas: </b></p>
+          <div>
+            <p><b>Estatísticas:</b></p>
           <ul>
-            <li v-for="(stats, index) in getter_pokemon.stats" :key="index"> -<b>{{ stats.stat.name }}: </b> {{ stats.base_stat }} </li>
+            <li v-for="(stats, index) in getter_pokemon.stats" :key="index"> -<b>{{ stats.stat.name }}: </b>
+              {{ stats.base_stat }}
+            </li>
           </ul>
         </div>
         <div class="habilidades">
-          <p><b>Habilidades: </b></p>
+          <p><b>Habilidades:</b></p>
           <div class="infosAbilities">
             <Loading  v-if="load"/>
             <p v-if="!load"> <i class="fas fa-info">-</i> {{ shortEffectMessage }} </p>
           </div>
           <ul v-for="(abilities, index) in getter_pokemon.abilities" :key="index">
-          <li @click="changeInfosAbilities(abilities.ability.url)"> - <i class="fas fa-info-circle"></i> {{ abilities.ability.name }} </li>
-        </ul>
+              <li @click="changeInfosAbilities(abilities.ability.url)"> - <i class="fas fa-info-circle"></i> {{ abilities.ability.name }} </li>
+            </ul>
+          </div>
         </div>
       </div>
-
       <div v-if="evolutions" class="evolutions">
-        <p><b>Evoluções: </b></p>
+        <div>
+          <p><b>Evoluções:</b></p>
         <div v-if="load">
           <Loading />
         </div>
@@ -54,6 +61,7 @@
               -<b>3° <span>Estágio</span>: </b><i class="fas fa-info-circle"></i> {{localEvolutionsApi.phaseThree.name |name }}
             </li>
           </ul>
+        </div>
       </div>
       <Modal
         v-if="showModal"
@@ -130,8 +138,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getListTypes',
-      'resetListTypes'
+      'getList',
+      'resetlist'
     ]),
     handleClickDetails () {
       this.details = !this.details
@@ -144,7 +152,7 @@ export default {
         const response = await apiClient.getAbility(abilityId)
         this.shortEffectMessage = response.data.effect_entries[1].short_effect
       } catch (error) {
-        console.log(error)
+        this.setError('Erro no servidor, tente novamente')
       } finally {
         this.load = false
       }
@@ -168,13 +176,12 @@ export default {
             this.evolutionsApi.phaseTwo = { ...dataEvolutions.data.chain.evolves_to[0].species }
             if (dataEvolutions.data.chain.evolves_to[0] && dataEvolutions.data.chain.evolves_to[0].evolves_to.length > 0) this.evolutionsApi.phaseThree = { ...dataEvolutions.data.chain.evolves_to[0].evolves_to[0].species }
           }
-
           this.load = false
         } catch (error) {
-          console.log(error)
+          this.setError('Erro no servidor, tente novamente')
         }
       } catch (error) {
-        console.log(error)
+        this.setError('Erro no servidor, tente novamente')
       }
     },
     clickPhase (name) {
@@ -191,22 +198,25 @@ export default {
         payload.forEach((element, index) => {
           names.push(element.pokemon.name)
         })
-        this.getListTypes({ listTypes: names })
+        this.getList({ list: names })
       } catch (error) {
-        console.log(error)
+        this.setError('Erro no servidor, tente novamente')
       }
     },
     closeModal (e) {
       this.showModal = e.modal
       this.load = e.load
       if (!this.showModal) {
-        this.resetListTypes({})
+        this.resetlist({})
         this.nameType = undefined
       }
       this.selectedByType(e.pokemon)
     },
     selectedByType (pokemon) {
       this.$emit('selectedByType', pokemon)
+    },
+    setError (msg) {
+      this.$emit('setError', msg)
     }
   },
   created () {
