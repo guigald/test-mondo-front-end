@@ -1,0 +1,121 @@
+.pokemonListByName {
+  @include utilBackground;
+  margin-right: $spaceDefault;
+  @include d(p) {
+    margin-right: 0;
+    margin-bottom: $spaceDefault;
+  }
+  flex: 1;
+  display: grid;
+  padding: $spaceDefault 0;
+  transition: all 1s;
+  position: relative;
+  h1 {
+    padding: 30px 0 $spaceDefault $spaceDefault;
+  }
+  .containerButtons {
+    margin: 0 auto;
+    margin-top: $spaceDefault;
+  }
+  .detailsInfos {
+    @include flex(c);
+    flex: 1;
+    min-height: 470px;
+    @include d(m) {
+      min-height: 570px;
+    }
+    @include d(m) {
+      padding-left: $spaceDefault;
+    }
+  }
+  .evolutions {
+    @include flex(c);
+  }
+  .details, .evolutions {
+    flex: 1;
+    border-left: 1px solid $white;
+    @include d(m) {
+      border-left: none;
+    }
+  }
+  .details {
+    @include flex(c);
+    justify-content: center !important;
+  }  
+  .habilidades, .types {
+    li {
+      &:hover {
+        cursor: pointer;
+        color: $blue;
+      }
+    }
+  }
+  .infosAbilities {
+    min-height: 180px;
+    max-width: 250px;
+    margin-right: $spaceDefault;
+    background: $blue !important;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: $shadowC;
+    margin-bottom: $spaceDefault;
+    @include d(m) {
+      min-height: 240px !important;
+    }
+    p {
+      color: $black;
+    }
+  }
+  .evolutions li {
+    cursor: pointer;
+    &:hover {
+      color: $blue;
+    }
+    &:hover span {
+      color: $blue;
+    }
+  }
+  button {
+    width: 153px;
+    margin: $spaceDefault 0;
+    padding: 0 $spaceDefault;
+    background: $yellow;
+    @include tipo-1(16, $white);
+    font-weight: bold;
+    border: 2px solid $yellow;
+    cursor: pointer;
+    border-radius: 4px;
+    outline-style: none;
+    &:hover {
+      background: $blue;
+    }
+  }
+  button + button {
+    margin-left: $spaceDefault;
+    @include d(m) {
+      margin: 0 0 $spaceDefault $spaceDefault;
+    }
+  }
+  .buttonActive {
+    background: $blue;
+  }
+  img {
+    margin: 0 auto;
+    margin-bottom: $spaceDefault;
+    align-self: flex-start;
+    width: 200px;
+    height: 200px;
+  }
+  li {
+    margin-left: $spaceDefault;
+    @include d(m) {
+      margin-left: 0;
+    }
+    span {
+      color: $white;
+      @include d(m) {
+        display: none;
+      }
+    }
+  }
+}

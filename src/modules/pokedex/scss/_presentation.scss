@@ -1,0 +1,29 @@
+.pokedexMain {
+  @include container;
+}
+.presentation {
+  margin: $spaceDefault 0;
+  @include utilBackground;
+  @include flex(s, wrap);
+  h1::after {
+    display: none;
+  }
+  div {
+    flex: 1 1 280px;
+    margin-right: $spaceDefault;
+    @include d(t) {
+      margin-right: 0;
+    }
+    span {
+      color: $yellow;
+      text-shadow: 2px 1px 0px #356fae, 
+                  -1px 0px 0px #356fae, 
+                   1px 2px 0px #356fae, 
+                   0px 3px 0px #356fae;
+    }
+  }
+  img {
+    flex: 2 1 280px;
+    padding: $spaceDefault 0;
+  }
+}

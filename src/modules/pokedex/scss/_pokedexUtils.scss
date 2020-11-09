@@ -1,0 +1,48 @@
+.modal {
+  background: rgba(0, 0, 0, .9);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 97%;
+  height: 100%;
+  padding: 0 $spaceDefault;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  scrollbar-color: $yellow #C2D2E4;
+    &::-webkit-scrollbar {
+      width: 18px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $yellow;
+      border-left: 4px solid #C2D2E4;
+      border-right: 4px solid #C2D2E4;
+    }
+    &::-webkit-scrollbar-track {
+      background: #faf6ed;
+    }
+  span {
+    color: $white !important;
+    background: $yellow;
+    @include flex(c);
+    align-items: center;
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+    text-align: center;
+    margin:$spaceDefault $spaceDefault 0 auto;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: em(24);
+    box-shadow: $shadowC;
+    &:hover {
+      background: $blue;
+    }
+  }
+  li {
+    margin: 5px 0;
+    cursor: pointer;
+    &:hover {
+      color: $blue;
+    }
+  }
+}

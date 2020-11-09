@@ -1,0 +1,82 @@
+.information {
+  margin: $spaceDefault 0;
+  
+  position: relative;
+  .informationHead {
+    @include utilBackground;
+    margin-bottom: $spaceDefault;
+  }
+  span {
+    color: $yellow;
+  }
+  form {
+    padding: $spaceDefault 0;
+    @include flex(s, wrap);
+    div {
+      @include flex(s);
+      flex-direction: column;
+    }
+    .informationSelect {
+      width: 150px;
+      margin-right: $spaceDefault;
+    }
+    #selectType {
+      height: 34px;    
+    }
+    .informationSearch {
+      flex: 1;
+      span {
+        display: flex;
+        input[type="search"]{
+          flex: 10 1 180px;
+        }
+        input[type="submit"] {
+          flex: 1 1 100px;
+          box-sizing: border-box;
+          background-color: $yellow;
+          font-weight: bold;
+          color: $white;
+          padding: 0;
+          margin-left: $spaceDefault;
+          border: 2px solid $yellow;
+          cursor: pointer;
+          border-radius: 4px;
+          outline: none;
+          &:hover {
+            background: $blue;
+          }
+        }
+      }
+    }
+  }
+  .contentLists {
+    @include flex(s, wrap);
+    @include d(p) {
+      flex-direction: column;
+    }
+    .pokemonListContent {
+      @include flex(s, wrap);
+    }
+  }
+  .error {
+    position: absolute;
+    width: 100%;
+    height: 93%;
+    top: 0;
+    left: 0;
+    @include flex(c);
+    padding:$spaceTitle;
+    @include tipo-2(24, $white);
+    @include d(m) {
+      font-size: em(18);
+    }
+    border-radius: 4px;
+    background: rgba(255, 0, 0, .9);
+    p {
+      padding: 20% $spaceDefault;
+      @include d(m) {
+        padding: 70% $spaceDefault;  
+      }
+    }
+  }
+}

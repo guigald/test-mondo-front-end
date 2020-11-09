@@ -1,0 +1,17 @@
+import getters from './getters'
+import mutations from './mutations'
+import actions from './actions'
+
+const state = {
+  error: undefined,
+  pokemonByName: undefined,
+  pokemonsList: undefined
+}
+
+export default {
+  namespaced: true,
+  state,
+  getters,
+  mutations,
+  actions
+}
