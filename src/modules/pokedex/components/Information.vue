@@ -117,7 +117,7 @@ export default {
         })
         this.getList({ list: names })
       } catch (error) {
-        this.search.error = 'Ops solicitação inválida, verifique o valor ou tente novamente mais tarde.'
+        this.search.error = 'Ops! solicitação inválida, verifique o valor ou tente novamente mais tarde.'
       } finally {
         this.search.pokemon = undefined
         this.removeModal(3000)

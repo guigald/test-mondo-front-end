@@ -91,7 +91,7 @@ export default {
     evolutionsApi: {},
     load: false,
     showModal: false,
-    shortEffect: 'As habilidades ou movimentos, são os poderes que os pokémon possuem para combate. Elas se dividem em 3 tipos: Físicos, Especiais e Efeito.',
+    shortEffect: 'As habilidades ou movimentos, são os poderes que os pokémons possuem para combate. Elas se dividem em 3 tipos: Físicos, Especiais e Efeito.',
     shortEffectMessage: undefined
   }),
   components: {

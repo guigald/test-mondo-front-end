@@ -12,3 +12,7 @@ Para instalar todas as dependências necessárias para acessar o projeto execute
 
 Para acessarmos o serviço e visualizarmos o conteúdo é necessário executar o comando **_npm run serve -- --open_**, aguarde alguns instantes para que o servidor seja iniciado, após o término uma página do seu navegador padrão será aberta e você conseguirá ter o acesso desejado.
 **_Desenvolvido por:_** Eduardo Fernandes
+
+### Visitar site em sua versão online
+
+https://pokemon-875a6.web.app/
